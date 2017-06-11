@@ -4,16 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.neo.andstudy.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
+    tools:context="com.andstudy.youin.andstudy.MainActivity">
+    <ScrollView
         android:layout_height="wrap_content"
-        android:text="This is successed project.asaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        android:id="@+id/idText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/main_bt_newscreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NewScreen"/>
 
+                <Button
+                    android:id="@+id/main_bt_relativelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="relative"/>
+
+                <Button
+                    android:id="@+id/main_bt_scrollview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="scrollview"/>
+                <Button
+                    android:id="@+id/main_bt_inplration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="inplrtion"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/main_bt_tablelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="tablelayout"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/main_bt_framelayout"
+                    android:text="framelayout"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="scrollview"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Intent data"
+                    android:id="@+id/main_bt_intentdata"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

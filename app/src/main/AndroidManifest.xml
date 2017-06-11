@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".IntentActivity"></activity>
+        <activity android:name=".SubActivity" />
+        <activity android:name=".RelativeLayoutActivity" />
+        <activity android:name=".ScrollViewActivity" />
+        <activity android:name=".TableLayoutActivity" />
+        <activity android:name=".FrameLayoutActivity" />
+        <activity android:name=".InplrationActivity" />
+        <activity android:name=".IntentDataPassActivity"></activity>
     </application>
 
 </manifest>
