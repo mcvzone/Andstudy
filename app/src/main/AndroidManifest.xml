@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.neo.andstudy">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +26,9 @@
         <activity android:name=".FrameLayoutActivity" />
         <activity android:name=".InplrationActivity" />
         <activity android:name=".IntentDataPassActivity" />
-        <activity android:name=".AdminMenuActivity"></activity>
+        <activity android:name=".AdminMenuActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".LifeCycleActivity"></activity>
     </application>
 
 </manifest>
