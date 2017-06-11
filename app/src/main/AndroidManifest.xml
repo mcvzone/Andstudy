@@ -3,6 +3,7 @@
     package="com.example.neo.andstudy">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -28,7 +29,19 @@
         <activity android:name=".IntentDataPassActivity" />
         <activity android:name=".AdminMenuActivity" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".LifeCycleActivity"></activity>
+        <activity android:name=".LifeCycleActivity" />
+        <activity android:name=".ServiceActivity" />
+
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".MySMSReceiver"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
     </application>
 
 </manifest>

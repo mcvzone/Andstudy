@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_bt_callphone).setOnClickListener(this);
         findViewById(R.id.main_bt_dynamic).setOnClickListener(this);
         findViewById(R.id.main_bt_lifecycle).setOnClickListener(this);
+        findViewById(R.id.main_bt_service).setOnClickListener(this);
+
     }
 
 
@@ -90,6 +92,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.main_bt_lifecycle:
                 intent = new Intent(getApplicationContext(), LifeCycleActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.main_bt_service:
+                intent = new Intent(getApplicationContext(), ServiceActivity.class);
                 startActivity(intent);
                 break;
         }
