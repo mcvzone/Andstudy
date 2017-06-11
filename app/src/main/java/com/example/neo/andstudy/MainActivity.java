@@ -1,10 +1,15 @@
 package com.example.neo.andstudy;
 
+import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,8 +19,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        int READ_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
+        int RECEIVE_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
+
+        // Here, thisActivity is the current activity
+        if (READ_SMS == PackageManager.PERMISSION_DENIED || RECEIVE_SMS == PackageManager.PERMISSION_DENIED) {
+            //shouldShowRequestPermissionRationale 는 권한 요청을 했지만, 사용자가 거부 한 경우 true를 리턴 한다.
+            //하지만 Don't ask again 을 체크한 상태에서 거부한 경우 false 를 리턴 한다.
+            boolean isReadSms = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_SMS);
+            Log.d("MYLOG", "isReadSms : " + isReadSms);
+
+            boolean isReceiveSms = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECEIVE_SMS);
+            Log.d("MYLOG", "isReceiveSms : " + isReceiveSms);
+
+            if( isReadSms || isReceiveSms ) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS}, 1);
+            }
+
+        }
 
         findViewById(R.id.main_bt_newscreen).setOnClickListener(this);
         findViewById(R.id.main_bt_relativelayout).setOnClickListener(this);
@@ -28,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_bt_dynamic).setOnClickListener(this);
         findViewById(R.id.main_bt_lifecycle).setOnClickListener(this);
         findViewById(R.id.main_bt_service).setOnClickListener(this);
+        findViewById(R.id.main_bt_permission).setOnClickListener(this);
 
     }
 
@@ -99,6 +127,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(getApplicationContext(), ServiceActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.main_bt_permission:
+                intent = new Intent(getApplicationContext(), PermissionActivity.class);
+                startActivity(intent);
+                break;
+
         }
     }
 

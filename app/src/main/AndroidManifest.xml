@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -37,11 +38,13 @@
             android:enabled="true"
             android:exported="true" />
 
-        <receiver
-            android:name=".MySMSReceiver"
-            android:enabled="true"
-            android:exported="true">
+        <receiver android:name=".MySMSReceiver">
+            <intent-filter android:priority="10000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
         </receiver>
+
+        <activity android:name=".PermissionActivity"></activity>
     </application>
 
 </manifest>
