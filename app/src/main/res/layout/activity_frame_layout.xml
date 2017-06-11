@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andstudy.youin.andstudy.FrameLayoutActivity">
+    tools:context="com.example.neo.andstudy.FrameLayoutActivity">
 
     <Button
         android:id="@+id/frame_bt_imagechange"

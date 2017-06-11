@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context="com.andstudy.youin.andstudy.ScrollViewActivity">
+    android:background="@drawable/dot"
+    tools:context="com.example.neo.andstudy.ScrollViewActivity">
 
-    <Button
+    <!--Button
         android:id="@+id/btn_cv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/dot"
-        android:text="Create Layout"/>
+        android:text="Create Layout"/-->
 </LinearLayout>
