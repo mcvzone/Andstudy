@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int READ_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
         int RECEIVE_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
 
+        Log.d("MYLOG", "READ_SMS - RECEIVE_SMS - PackageManager.PERMISSION_DENIED : " + READ_SMS + " - " + RECEIVE_SMS + " - " + PackageManager.PERMISSION_DENIED);
+
         // Here, thisActivity is the current activity
         if (READ_SMS == PackageManager.PERMISSION_DENIED || RECEIVE_SMS == PackageManager.PERMISSION_DENIED) {
             //shouldShowRequestPermissionRationale 는 권한 요청을 했지만, 사용자가 거부 한 경우 true를 리턴 한다.
@@ -39,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if( isReadSms || isReceiveSms ) {
 
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS}, 1);
+
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS}, ACTIVITY_MENU);
             }
 
         }
@@ -59,6 +63,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.d("MYLOG", "onRequestPermissionsResult result. requestCode : " + requestCode);
+        switch(requestCode){
+            case ACTIVITY_MENU: {
+                if (grantResults.length > 0 ) {
+                    Log.d("MYLOG", "grantResults[0] result : " + grantResults[0]);
+                    if( grantResults[0] == PackageManager.PERMISSION_GRANTED ){
+
+                    }
+
+                    Log.d("MYLOG", "grantResults[1] result : " + grantResults[1]);
+                    if( grantResults[1] == PackageManager.PERMISSION_GRANTED ){
+
+                    }
+                }
+                return;
+            }
+        }
+    }
 
     @Override
     public void onClick(View v) {

@@ -32,6 +32,7 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".LifeCycleActivity" />
         <activity android:name=".ServiceActivity" />
+        <activity android:name=".PermissionActivity"/>
 
         <service
             android:name=".MyService"
@@ -44,7 +45,6 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".PermissionActivity"></activity>
     </application>
 
 </manifest>
