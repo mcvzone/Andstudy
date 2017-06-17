@@ -32,7 +32,7 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".LifeCycleActivity" />
         <activity android:name=".ServiceActivity" />
-        <activity android:name=".PermissionActivity"/>
+        <activity android:name=".PermissionActivity" />
 
         <service
             android:name=".MyService"
@@ -44,7 +44,6 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

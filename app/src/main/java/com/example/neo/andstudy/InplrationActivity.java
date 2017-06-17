@@ -17,6 +17,7 @@ public class InplrationActivity extends AppCompatActivity {
     }
 
     public void onButtonClicked(View v){
+        /* xml을 붙여줄때 사용하는 코드
         LinearLayout container = (LinearLayout)findViewById(R.id.inp_lay_container);
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.inplration_sub, container, true);
@@ -27,5 +28,13 @@ public class InplrationActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "서브화면의 버튼이 클릭되었습니다.", Toast.LENGTH_LONG).show();
             }
         });
+        */
+
+        //java 로 로딩하는 방법.
+        Sublayout layout1 = new Sublayout(this);
+        LinearLayout container = (LinearLayout)findViewById(R.id.inp_lay_container);
+        container.addView(layout1);
+
+
     }
 }

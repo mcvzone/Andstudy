@@ -2,6 +2,7 @@ package com.example.neo.andstudy;
 
 import android.Manifest;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,10 +10,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //문자메시지의 내용을 가져오기 위해, 권한을 얻어야 한다
+        //4.0 버전 이상 부터는 해당 기능을 통해 필요한 부분모두 권한을 사용자로 부터 얻어야
+        //permission 값이 0이 되어 해당 기능을 사용할수 있게된다.
         int READ_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
         int RECEIVE_SMS = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
 
@@ -60,10 +66,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.main_bt_lifecycle).setOnClickListener(this);
         findViewById(R.id.main_bt_service).setOnClickListener(this);
         findViewById(R.id.main_bt_permission).setOnClickListener(this);
-
+        findViewById(R.id.main_bt_msgbox).setOnClickListener(this);
     }
 
 
+    /**
+     * 퍼미션 메소드를 호출후의 콜백함수.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d("MYLOG", "onRequestPermissionsResult result. requestCode : " + requestCode);
@@ -98,6 +110,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.main_bt_relativelayout:
                 intent = new Intent(getApplicationContext(), RelativeLayoutActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.main_bt_inplration:
+                intent = new Intent(getApplicationContext(), InplrationActivity.class);
                 startActivity(intent);
                 break;
 
@@ -157,7 +174,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(getApplicationContext(), PermissionActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.main_bt_msgbox:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("안내");
+                builder.setMessage("종료하시겠습니까?");
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
 
+
+                builder.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "아니요 버튼이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "예 버튼이 클릭되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog dial = builder.create();
+                dial.show();
+
+                //intent = new Intent(getApplicationContext(), MsgboxActivity.class);
+                //startActivity(intent);
+                break;
         }
     }
 
